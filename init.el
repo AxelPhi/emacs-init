@@ -17,6 +17,7 @@
 	color-theme-sanityinc-solarized
 	json-mode
 	json-reformat
+	markdown-mode
 	))
 
 (package-initialize)
@@ -61,6 +62,14 @@
 (setq auto-mode-alist (cons '("\\.xsl$" . nxml-mode) auto-mode-alist))
 (autoload 'xml-mode "nxml" "XML editing mode" t)
 (global-set-key [C-return] 'completion-at-point)
+
+;; Markdown editing
+(add-hook 'markdown-mode-hook
+	  (lambda ()
+	    (when buffer-file-name
+	      (add-hook 'after-save-hook
+			'check-parens
+			nil t))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Layout and defaults
