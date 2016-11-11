@@ -34,8 +34,8 @@
 
 ;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
 (custom-set-variables
-  '(auto-save-file-name-transforms '((".*" "~/.emacs.d/autosaves/\\1" t)))
-  '(backup-directory-alist '((".*" . "~/.emacs.d/backups/"))))
+ '(auto-save-file-name-transforms '((".*" "~/.emacs.d/autosaves/\\1" t)))
+ '(backup-directory-alist '((".*" . "~/.emacs.d/backups/"))))
 
 ;; create the autosave dir if necessary, since emacs won't.
 (make-directory "~/.emacs.d/autosaves/" t)
@@ -44,6 +44,14 @@
 
 ;; Use some more memory for undo
 (setq undo-outer-limit 26127069)
+
+;; Bind "indent-region" shortcuts
+(defun indent-buffer()
+  (interactive)
+  (save-excursion
+    (indent-region (point-min) (point-max) nil)))
+(global-set-key (kbd "C-'") 'indent-buffer)
+(global-set-key (kbd "C-#") 'indent-region)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Configure modes
@@ -78,5 +86,5 @@
 ;; Highlight paranthesis pairs
 (show-paren-mode t)
 
-;; Yes, I'd like to see column number
+;; Yes, I'd like to see column numbers
 (column-number-mode t)
