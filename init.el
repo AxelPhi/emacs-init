@@ -14,6 +14,7 @@
 ;; list of packages to sync
 (setq package-list
       '(
+	auto-complete
 	color-theme-sanityinc-solarized
 	json-mode
 	json-reformat
@@ -57,6 +58,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Configure modes
 
+;; Autocomplete
+(ac-config-default)
+(auto-complete-mode t)
+
 ;; XML editing
 (setq auto-mode-alist (cons '("\\.xml$" . nxml-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.xsl$" . nxml-mode) auto-mode-alist))
@@ -77,9 +82,12 @@
 ;; Color theme selection
 (load-theme 'tango-dark t)
 
-;; Set to 132x48 dimensions
-(add-to-list 'default-frame-alist '(height . 48))
-(add-to-list 'default-frame-alist '(width . 132))
+;; Use default syntax highlighting
+(global-font-lock-mode 1)
+
+;; Set window dimensions
+(add-to-list 'default-frame-alist '(height . 28))
+(add-to-list 'default-frame-alist '(width . 60))
 
 ;; "y" and "n" are enough to answer "yes" or "no"
 (fset 'yes-or-no-p 'y-or-n-p)
