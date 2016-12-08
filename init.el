@@ -9,16 +9,19 @@
              '("melpa" . "http://melpa.milkbox.net/packages/"))
 (add-to-list 'package-archives
              '("gnu" . "http://elpa.gnu.org/packages/"))
-
+(add-to-list 'package-archives
+             '("elpy" . "https://jorgenschaefer.github.io/packages/"))
 
 ;; list of packages to sync
 (setq package-list
       '(
 	auto-complete
+	auto-complete-nxml
 	color-theme-sanityinc-solarized
 	json-mode
 	json-reformat
 	markdown-mode
+	elpy
 	))
 
 (package-initialize)
@@ -59,8 +62,15 @@
 ;; Configure modes
 
 ;; Autocomplete
+(require 'auto-complete)
 (ac-config-default)
+(require 'auto-complete-nxml)
 (auto-complete-mode t)
+
+;; python Mode
+(require 'elpy)
+(elpy-enable)
+
 
 ;; XML editing
 (setq auto-mode-alist (cons '("\\.xml$" . nxml-mode) auto-mode-alist))
@@ -87,7 +97,7 @@
 
 ;; Set window dimensions
 (add-to-list 'default-frame-alist '(height . 28))
-(add-to-list 'default-frame-alist '(width . 60))
+(add-to-list 'default-frame-alist '(width . 80))
 
 ;; "y" and "n" are enough to answer "yes" or "no"
 (fset 'yes-or-no-p 'y-or-n-p)
