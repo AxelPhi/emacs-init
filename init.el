@@ -46,7 +46,6 @@
 (make-directory "~/.emacs.d/autosaves/" t)
 (make-directory "~/.emacs.d/backups/" t)
 
-
 ;; Use some more memory for undo
 (setq undo-outer-limit 26127069)
 
@@ -94,6 +93,13 @@
 
 ;; Use default syntax highlighting
 (global-font-lock-mode 1)
+
+;; Load whitespace.el
+(require 'whitespace)
+(setq whitespace-style (quote
+			(face trailing tab-mark empty)))
+(global-whitespace-mode 1)
+
 
 ;; Set window dimensions
 (add-to-list 'default-frame-alist '(height . 28))
