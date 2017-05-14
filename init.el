@@ -21,6 +21,8 @@
 	json-mode
 	json-reformat
 	markdown-mode
+	yaml-mode
+	dockerfile-mode
 	elpy
 	))
 
@@ -35,7 +37,7 @@
     (package-install pkg)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Configure behaviour
+;; Configure behavior
 
 ;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
 (custom-set-variables
@@ -102,8 +104,8 @@
 
 
 ;; Set window dimensions
-(add-to-list 'default-frame-alist '(height . 28))
-(add-to-list 'default-frame-alist '(width . 80))
+(add-to-list 'default-frame-alist '(height . 43))
+(add-to-list 'default-frame-alist '(width . 120))
 
 ;; "y" and "n" are enough to answer "yes" or "no"
 (fset 'yes-or-no-p 'y-or-n-p)
