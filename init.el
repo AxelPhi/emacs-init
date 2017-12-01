@@ -22,12 +22,14 @@
 	docker-compose-mode
 	dockerfile-mode
 	elpy
+	flymd
 	helm
 	jinja2-mode
 	js2-mode
 	json-mode
 	json-reformat
 	markdown-mode
+	switch-window
 	yaml-mode
 	web-mode
 	workgroups2
@@ -161,6 +163,11 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 ;; Better imenu
 (add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
+
+;; Switch window to navigate multiple windows
+(require 'switch-window)
+(global-set-key (kbd "C-x o") 'switch-window)
+(setq switch-window-increase 6)
 
 ;; Custom functions
 (defun xml-format ()
